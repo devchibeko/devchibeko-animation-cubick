@@ -1,0 +1,181 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  perspective: 900px;
+  height: 100vh;
+  background: #0d1117;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.container{
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateX(-20deg) rotateY(45deg);
+  transform-style: preserve-3d;
+  transition: top 1s;
+}
+.container:hover{
+  top: 45%;
+}
+.container >*{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 300px;
+  height: 300px;
+  background: #0000002a;
+  text-align: center;
+  line-height: 200px;
+  font-size: 33px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.frond{
+  transform: translate3d(0, 0, 150px);
+}
+.frond::before{
+  content: 'Devchi | Beko';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transition: 1s;
+  animation: water 1s linear infinite alternate;
+  overflow: hidden;
+}
+.container:hover .frond::before{
+  height: 0%;
+}
+.right{
+  transform: translate3d(150px, 0, 0) rotateY(90deg);
+}
+.right::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transition: 1s;
+  animation: water 1s linear infinite alternate;
+}
+.container:hover .right::before{
+  height: 0%;
+}
+.left{
+  transform: translate3d(-150px, 0, 0) rotateY(-90deg);
+}
+.left::before{
+  content: 'Devchi | Beko';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transition: 1s;
+  animation: water 1s linear infinite alternate;
+  overflow: hidden;
+}
+.container:hover .left::before{
+  height: 0%;
+}
+.container::before{
+  position: absolute;
+  content: 'Devchi | Beko';
+  width: 100%;
+  height: 100%;
+  background-color: #00ff00;
+  transform: rotateX(90deg) translate3d(0,0,-150px);
+  animation: water-top 1s linear infinite alternate;
+  color: #fff;
+  font-size: 33px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 300px;
+  text-align: center;
+}
+@keyframes water-top{
+  0%{
+    transform: rotateX(90deg) translate3d(0,0,-150px);
+  }
+  100%{
+    transform: rotateX(90deg) translate3d(0,0,150px);
+  }
+}
+.container::after{
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  transform: rotateX(90deg) translate3d(0,0,-220px) translateY(20px);
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 1s;
+}
+.container:hover::after{
+  opacity: 1;
+}
+.back{
+  transform: translate3d(0, 0, -150px) rotateX(180deg) rotate(180deg);
+}
+.back::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transition: 1s;
+  animation: water 1s linear infinite alternate;
+}
+.container:hover .back::before{
+  height: 0%;
+}
+.top{
+  transform: translate3d(0, -150px, 0) rotateX(90deg);
+}
+.top:hover{
+  transform: translate3d(0, 150px, 0);
+}
+.bottom{
+  transform: translate3d(0, 150px, 0) rotateX(-90deg) rotateZ(-90deg);
+}
+.bottom::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transition: 1s;
+}
+
+@keyframes water{
+  0%{
+    height: 0%;
+  }
+  25%{
+    height: 25%;
+  }
+  50%{
+    height: 50%;
+  }
+  75%{
+    height: 75%;
+  }
+  100%{
+    height: 100%;
+  }
+}
